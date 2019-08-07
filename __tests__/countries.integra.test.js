@@ -1,24 +1,41 @@
 let chai = require('chai');
 let chaiHttp = require('chai-http');
 let server = require('../index');
+const db = require('../db');
 
 chai.use(chaiHttp);
 
 describe('Testing Countries route', () => {
+  let requester;
+
   beforeEach(() => {});
 
   afterEach(() => {});
 
-  describe('POST /countries', (done) => {
-    test('Should create a new country', async () => {
-      const res = await chai.request(server).post('/countries').send({
+  beforeAll( done => {
+    requester = chai.request(server).keepOpen();
+    db.query('TRUNCATE TABLE `countries`', function (error, results, fields) {
+      if (error) {
+        throw error;
+      }
+      done();
+    });
+  });
+
+  afterAll(done => {
+    requester.close(done);
+  });
+
+  describe('POST /countries', () => {
+    test('Should create a new country', async (done) => {
+      const res = await requester.post('/countries').send({
         name: 'Peru test',
         currency: 'PEN',
         phoneCode: '51',
         isoCode: 'PE',
       });
       expect(res.status).toEqual(201);
-      //done();
+      done();
     });
   });
 
