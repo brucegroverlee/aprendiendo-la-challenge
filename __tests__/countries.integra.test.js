@@ -35,6 +35,18 @@ describe('Testing Countries route', () => {
     });
   });
 
+  describe('UPDATE /countries', () => {
+    test('Should update a country', async (done) => {
+      const res = await requester.put('/countries/Peru-test').send({
+        currency: 'PEP',
+        phoneCode: '51',
+        isoCode: 'PE',
+      });
+      expect(res.status).toEqual(202);
+      done();
+    });
+  });
+
   describe('DELETE /countries', () => {
     test('Should delete a country', async (done) => {
       const res = await requester.del('/countries/Peru-test');
