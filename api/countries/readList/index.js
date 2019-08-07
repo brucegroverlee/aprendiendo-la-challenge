@@ -15,7 +15,7 @@ const readListCountry = (res) => {
       if (error) {
         throw error;
       }
-      resolve([true, results]);
+      resolve(results);
     });
   });
 };
@@ -25,15 +25,12 @@ const readListCountry = (res) => {
  */
 module.exports = async (req, res) => {
   try {
-    let readListSucsessfully = false;
     let result = {};
 
-    [readListSucsessfully, result] = await readListCountry(res);
+    result = await readListCountry(res);
+    res.status(200);
+    res.send(result);
 
-    if (readListSucsessfully) {
-      res.status(200);
-      res.send(result);
-    }
   } catch (error) {
     res.status(500);
     res.send({

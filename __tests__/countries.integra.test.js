@@ -36,6 +36,14 @@ describe('Testing Countries route', () => {
   });
 
   describe('GET /countries', () => {
+    test('Should read the countries list', async (done) => {
+      const res = await requester.get('/countries');
+      expect(res.status).toEqual(200);
+      done();
+    });
+  });
+
+  describe('GET /countries', () => {
     test('Should read a country', async (done) => {
       const res = await requester.get('/countries/Peru-test');
       expect(res.status).toEqual(200);
