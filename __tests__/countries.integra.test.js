@@ -29,7 +29,7 @@ describe('Testing Countries route', () => {
   describe('POST /countries', () => {
     test('Should create a new country', async (done) => {
       const res = await requester.post('/countries').send({
-        name: 'Peru test',
+        name: 'Peru-test',
         currency: 'PEN',
         phoneCode: '51',
         isoCode: 'PE',
