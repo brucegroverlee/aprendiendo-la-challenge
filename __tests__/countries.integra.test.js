@@ -71,4 +71,12 @@ describe('Testing Countries route', () => {
     });
   });
 
+  describe('POST /none', () => {
+    test('Should show 404 error', async (done) => {
+      const res = await requester.del('/none');
+      expect(res.status).toEqual(404);
+      done();
+    });
+  });
+
 });
