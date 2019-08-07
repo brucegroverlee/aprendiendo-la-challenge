@@ -1,4 +1,7 @@
 const getMocks = require('../../../__mocks__/getMocks');
+jest.mock('../../../db');
+
+console.log('process.env.DB_HOST: ', process.env.DB_HOST);
 
 describe('Test countries create', () => {
 

@@ -7,9 +7,8 @@
     "test": "jest --coverage --detectOpenHandles --forceExit"
   },
   "jest": {
-    "setupFiles": [
-      "dotenv/config"
-    ]
+    "testEnvironment": "node", 
+    "setupFilesAfterEnv": ["./dotenv/config.js"]
   },
   "author": "Grover Lee",
   "license": "ISC",

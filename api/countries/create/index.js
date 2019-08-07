@@ -24,6 +24,12 @@ const areAttributesValid = (country, res) => {
   }
 };
 
+/**
+ * 
+ * @param {Object} country 
+ * @param {Object} res 
+ * @returns {Promise} - Returns True if the operation was successfully. Otherwise, throw an error.
+ */
 const createNewCountry = (country, res) => {
   return new Promise((resolve) => {
     const {name, currency, phoneCode, isoCode} = country;
