@@ -34,7 +34,6 @@ const deleteACountry = (country, res) => {
         [name], 
         function (error, results, fields
       ) {
-      console.log('error: ', error);
       if (error) {
         throw error;
       }

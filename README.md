@@ -166,7 +166,6 @@ Content-type: application/json
 ##### Body
 ```js
 {
-  "name": String,
   "currency": String,
   "phoneCode": String,
   "isoCode": String
