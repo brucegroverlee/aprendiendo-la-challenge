@@ -8,10 +8,6 @@ chai.use(chaiHttp);
 describe('Testing Countries route', () => {
   let requester;
 
-  beforeEach(() => {});
-
-  afterEach(() => {});
-
   beforeAll( done => {
     requester = chai.request(server).keepOpen();
     db.query('TRUNCATE TABLE `countries`', function (error, results, fields) {

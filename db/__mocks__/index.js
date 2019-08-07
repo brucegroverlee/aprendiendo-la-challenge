@@ -18,7 +18,7 @@ const __setMockFields = (newMockFields) => {
 db.__setMockError = __setMockError;
 db.__setMockResults = __setMockResults;
 db.__setMockFields = __setMockFields;
-db.query = (query, callback) => {
+db.query = (query, values, callback) => {
   callback(__mockError, __mockResults, __mockFields);
 };
 module.exports = db;

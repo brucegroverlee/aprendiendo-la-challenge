@@ -3,6 +3,10 @@ jest.mock('../../../db');
 
 describe('Test countries delete', () => {
 
+  beforeEach(() => {
+    require('../../../db').__setMockError(false);
+  });
+
   test('should delete a country.', async () => {
     let mocks = getMocks();
     mocks.req.params = {
@@ -26,13 +30,10 @@ describe('Test countries delete', () => {
   })
 
   test('should fail the MySQL server: ' + process.env.DB_HOST, async () => {
-    require('../../../db').__setMockError(true);
+    // require('../../../db').__setMockError(true);
     let mocks = getMocks();
-    mocks.req.body = {
+    mocks.req.params = {
       name: 'Peru',
-      currency: 'PEN',
-      phoneCode: '51',
-      isoCode: 'PE',
     };
     const functionTest = require('./index');
     await functionTest(mocks.req, mocks.res);
