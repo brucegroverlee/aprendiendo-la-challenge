@@ -45,6 +45,36 @@ const areAttributesValid = (country, res) => {
 
 /**
  * 
+ * @param {Object} name 
+ * @param {Object} res 
+ * @returns {Promise} - Returns True if the country exists. Otherwise, returns false.
+ */
+const doesCountryExist = (name, res) => {
+  return new Promise((resolve) => {
+    db.query(
+        'SELECT * FROM `countries` WHERE `name` LIKE ?', 
+        [name], 
+        function (error, results, fields) {
+      if (error) {
+        throw error;
+      }
+      if (results.length===0) {
+        // is available
+        res.status(406);
+        res.send({
+          "message":"The country doesn\'t exist."
+        });
+        resolve(false);
+      } else  {
+        // is not
+        resolve(true);
+      }
+    });
+  });
+};
+
+/**
+ * 
  * @param {Object} country 
  * @param {Object} res 
  * @returns {Promise} - Returns True if the operation was successfully. Otherwise, throw an error.
@@ -73,22 +103,28 @@ module.exports = async (req, res) => {
     const countryName = req.params.name;
     const countryAttributes = req.body;
 
+    let areValid = false;
+    let countryExist = false;
     let updatedSucsessfully = false;
 
 
     const isValid = isNameValid(countryName, res);
 
     if (isValid) {
-      const areValid = areAttributesValid(countryAttributes, res);
+      areValid = areAttributesValid(countryAttributes, res);
+    }
 
-      if (areValid) {
-        updatedSucsessfully = await updateCountry(countryName, countryAttributes, res);
-      }
+    if (areValid) {
+      countryExist = await doesCountryExist(countryName, res);
+    }
 
-      if (updatedSucsessfully) {
-        res.status(202);
-        res.end();
-      }
+    if (countryExist) {
+      updatedSucsessfully = await updateCountry(countryName, countryAttributes, res);
+    }
+
+    if (updatedSucsessfully) {
+      res.status(202);
+      res.end();
     }
   } catch (error) {
     res.status(500);

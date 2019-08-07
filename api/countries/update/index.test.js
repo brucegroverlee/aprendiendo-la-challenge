@@ -5,9 +5,16 @@ describe('Test countries update', () => {
 
   beforeEach(() => {
     require('../../../db').__setMockError(false);
+    require('../../../db').__setMockResults([]);
   });
 
   test('should update a country.', async () => {
+    require('../../../db').__setMockResults([{
+      name: 'Peru',
+      currency: 'PEN',
+      phoneCode: '51',
+      isoCode: 'PE',
+    }]);
     let mocks = getMocks();
     mocks.req.params = {
       name: 'Peru',
@@ -21,6 +28,22 @@ describe('Test countries update', () => {
     await functionTest(mocks.req, mocks.res);
     expect(mocks.res.status.mock.calls[0][0]).toBe(202);
     expect(mocks.res.end.mock.calls.length).toBe(1);
+  })
+
+  test('shouldn\'t update a country. The country doesn\'t exists.', async () => {
+    let mocks = getMocks();
+    mocks.req.params = {
+      name: 'Peru',
+    };
+    mocks.req.body = {
+      currency: 'PEN',
+      phoneCode: '511',
+      isoCode: 'PE',
+    };
+    const functionTest = require('./index');
+    await functionTest(mocks.req, mocks.res);
+    expect(mocks.res.status.mock.calls[0][0]).toBe(406);
+    expect(mocks.res.send.mock.calls.length).toBe(1);
   })
 
   test('shouldn\'t update a country. The name is empty or not valid.', async () => {
