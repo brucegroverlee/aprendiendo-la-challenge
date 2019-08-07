@@ -28,6 +28,20 @@ El archivo **.env** será omitido en el **.gitignore** para efecto del reto téc
 
 #### POST /COUNTRIES
 
+##### Header
+```
+Content-type: application/json
+```
+##### Body
+```js
+{
+  "name": String,
+  "currency": String,
+  "phoneCode": String,
+  "isoCode": String
+}
+```
+
 <table>
   <thead>
     <tr>
@@ -59,6 +73,15 @@ El archivo **.env** será omitido en el **.gitignore** para efecto del reto téc
 
 #### GET /COUNTRIES
 
+##### Header
+```
+Content-type: application/json
+```
+##### Body
+```js
+NO CONTENT
+```
+
 <table>
   <thead>
     <tr>
@@ -80,6 +103,15 @@ El archivo **.env** será omitido en el **.gitignore** para efecto del reto téc
 </table>
 
 #### GET /COUNTRIES/{name}
+
+##### Header
+```
+Content-type: application/json
+```
+##### Body
+```js
+NO CONTENT
+```
 
 <table>
   <thead>
@@ -117,6 +149,20 @@ El archivo **.env** será omitido en el **.gitignore** para efecto del reto téc
 
 #### PUT /COUNTRIES/{name}
 
+##### Header
+```
+Content-type: application/json
+```
+##### Body
+```js
+{
+  "name": String,
+  "currency": String,
+  "phoneCode": String,
+  "isoCode": String
+}
+```
+
 <table>
   <thead>
     <tr>
@@ -147,6 +193,15 @@ El archivo **.env** será omitido en el **.gitignore** para efecto del reto téc
 </table>
 
 #### DELETE /COUNTRIES/{name}
+
+##### Header
+```
+Content-type: application/json
+```
+##### Body
+```js
+NO CONTENT
+```
 
 <table>
   <thead>

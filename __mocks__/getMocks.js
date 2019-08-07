@@ -24,4 +24,4 @@ const getMocks = () => {
   };
 };
 
-exports.getMocks = getMocks;
+module.exports = getMocks;
