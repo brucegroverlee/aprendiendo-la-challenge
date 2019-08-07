@@ -90,8 +90,10 @@ describe('Test countries update', () => {
   test('should fail the MySQL server: ' + process.env.DB_HOST, async () => {
     require('../../../db').__setMockError(true);
     let mocks = getMocks();
-    mocks.req.body = {
+    mocks.req.params = {
       name: 'Peru',
+    };
+    mocks.req.body = {
       currency: 'PEN',
       phoneCode: '51',
       isoCode: 'PE',
