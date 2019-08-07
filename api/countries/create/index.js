@@ -33,7 +33,10 @@ const areAttributesValid = (country, res) => {
 const createNewCountry = (country, res) => {
   return new Promise((resolve) => {
     const {name, currency, phoneCode, isoCode} = country;
-    db.query(`INSERT INTO \`countries\` (\`name\`, \`currency\`, \`phoneCode\`, \`isoCode\`) VALUES ('${name}', '${currency}', '${phoneCode}', '${isoCode}');`, function (error, results, fields) {
+    db.query(
+        `INSERT INTO \`countries\` (\`name\`, \`currency\`, \`phoneCode\`, \`isoCode\`) VALUES (?, ?, ?, ?);`, 
+        [name, currency, phoneCode, isoCode], 
+        function (error, results, fields) {
       if (error) {
         throw error;
       }

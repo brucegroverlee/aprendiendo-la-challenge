@@ -30,7 +30,7 @@ const deleteACountry = (country, res) => {
   return new Promise((resolve) => {
     const {name} = country;
     db.query(
-        'DELETE FROM `countries` WHERE `countries`.`name` = \'?\'', 
+        'DELETE FROM `countries` WHERE `countries`.`name` = ?', 
         [name], 
         function (error, results, fields
       ) {

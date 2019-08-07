@@ -30,7 +30,7 @@ describe('Test countries delete', () => {
   })
 
   test('should fail the MySQL server: ' + process.env.DB_HOST, async () => {
-    // require('../../../db').__setMockError(true);
+    require('../../../db').__setMockError(true);
     let mocks = getMocks();
     mocks.req.params = {
       name: 'Peru',
