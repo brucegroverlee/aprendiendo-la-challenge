@@ -1,8 +1,6 @@
 const getMocks = require('../../../__mocks__/getMocks');
 jest.mock('../../../db');
 
-console.log('process.env.DB_HOST: ', process.env.DB_HOST);
-
 describe('Test countries create', () => {
 
   test('should create a new country.', async () => {
@@ -75,5 +73,19 @@ describe('Test countries create', () => {
     expect(mocks.res.send.mock.calls.length).toBe(1);
   })
   
+  test('should fail the MySQL server: ' + process.env.DB_HOST, async () => {
+    require('../../../db').__setMockError(true);
+    let mocks = getMocks();
+    mocks.req.body = {
+      name: 'Peru',
+      currency: 'PEN',
+      phoneCode: '51',
+      isoCode: 'PE',
+    };
+    const functionTest = require('./index');
+    await functionTest(mocks.req, mocks.res);
+    expect(mocks.res.status.mock.calls[0][0]).toBe(500);
+    expect(mocks.res.send.mock.calls.length).toBe(1);
+  })
   
 });
