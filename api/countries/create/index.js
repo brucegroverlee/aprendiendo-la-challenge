@@ -11,7 +11,7 @@ const areAttributesValid = (country, res) => {
   if ( name==='' || name===undefined || 
       currency==='' || currency===undefined || 
       phoneCode==='' || phoneCode===undefined || 
-      isoCode==='' || isoCode===undefined
+      isoCode==='' || isoCode===undefined || isoCode.length!==2
   ) {
     res.status(406);
     res.send({

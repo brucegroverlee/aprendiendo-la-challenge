@@ -33,11 +33,25 @@ npm test
 | phoneCode |
 | isoCode   |
 
+## DB
+```sql
+CREATE TABLE `countries` (
+  `name` varchar(30) NOT NULL,
+  `currency` varchar(3) NOT NULL,
+  `phoneCode` varchar(5) NOT NULL,
+  `isoCode` varchar(2) NOT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
 
 ## API Reference
 
 #### POST /COUNTRIES
 
+##### Request
+```
+POST http://{host}:{port}/countries
+```
 ##### Header
 ```
 Content-type: application/json
@@ -83,6 +97,10 @@ Content-type: application/json
 
 #### GET /COUNTRIES
 
+##### Request
+```
+GET http://{host}:{port}/countries
+```
 ##### Header
 ```
 Content-type: application/json
@@ -114,6 +132,10 @@ NO CONTENT
 
 #### GET /COUNTRIES/{name}
 
+##### Request
+```
+GET http://{host}:{port}/countries/{country-name}
+```
 ##### Header
 ```
 Content-type: application/json
@@ -159,6 +181,10 @@ NO CONTENT
 
 #### PUT /COUNTRIES/{name}
 
+##### Request
+```
+PUT http://{host}:{port}/countries/{country-name}
+```
 ##### Header
 ```
 Content-type: application/json
@@ -203,6 +229,10 @@ Content-type: application/json
 
 #### DELETE /COUNTRIES/{name}
 
+##### Request
+```
+DELETE http://{host}:{port}/countries/{country-name}
+```
 ##### Header
 ```
 Content-type: application/json
