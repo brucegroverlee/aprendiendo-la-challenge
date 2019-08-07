@@ -35,6 +35,14 @@ describe('Testing Countries route', () => {
     });
   });
 
+  describe('GET /countries', () => {
+    test('Should read a country', async (done) => {
+      const res = await requester.get('/countries/Peru-test');
+      expect(res.status).toEqual(200);
+      done();
+    });
+  });
+
   describe('UPDATE /countries', () => {
     test('Should update a country', async (done) => {
       const res = await requester.put('/countries/Peru-test').send({
