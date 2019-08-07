@@ -14,3 +14,165 @@ La organización de archivos será por modulos y usando el paradigma de Programa
 
 ## Observaciones
 El archivo **.env** será omitido en el **.gitignore** para efecto del reto técnico.
+
+## Class
+| country   |
+|-----------|
+| name      |
+| currency  |
+| phoneCode |
+| isoCode   |
+
+
+## API Reference
+
+#### POST /COUNTRIES
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>CODE</th>
+      <th>Description</th>
+      <th>Data</th>
+    </tr>
+    <tr>
+      <td style="color:green;">201 CREATED</td>
+      <td>success</td>
+      <td>no content</td>
+    </tr>
+    <tr>
+      <td style="color:red;">406 NOT ACCEPTABLE</td>
+      <td>failed. Some field was empty or undefined</td>
+      <td>
+<pre>{
+  "message": String
+}</pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+#### GET /COUNTRIES
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>CODE</th>
+      <th>Description</th>
+      <th>Data</th>
+    </tr>
+    <tr>
+      <td style="color:green;">200 OK</td>
+      <td>success</td>
+      <td><pre>Object[]</pre></td>
+    </tr>
+  </tbody>
+</table>
+
+#### GET /COUNTRIES/{name}
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>CODE</th>
+      <th>Description</th>
+      <th>Data</th>
+    </tr>
+    <tr>
+      <td style="color:green;">200 OK</td>
+      <td>success</td>
+      <td><pre>{
+  "name": String,
+  "currency": String,
+  "phoneCode": String,
+  "isoCode": String
+}</pre></td>
+    </tr>
+    <tr>
+      <td style="color:red;">404 NOT FOUND</td>
+      <td>failed. The name doesn't exist.</td>
+      <td>
+<pre>{
+  "message": String
+}</pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+#### PUT /COUNTRIES/{name}
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>CODE</th>
+      <th>Description</th>
+      <th>Data</th>
+    </tr>
+    <tr>
+      <td style="color:green;">202 ACCEPTED</td>
+      <td>success</td>
+      <td>no content</td>
+    </tr>
+    <tr>
+      <td style="color:red;">406 NOT ACCEPTABLE</td>
+      <td>failed. Some field was empty or undefined</td>
+      <td>
+<pre>{
+  "message": String
+}</pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+#### DELETE /COUNTRIES/{name}
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>CODE</th>
+      <th>Description</th>
+      <th>Data</th>
+    </tr>
+    <tr>
+      <td style="color:green;">202 ACCEPTED</td>
+      <td>success</td>
+      <td>no content</td>
+    </tr>
+    <tr>
+      <td style="color:red;">406 NOT ACCEPTABLE</td>
+      <td>failed. The name doesn't exist.</td>
+      <td>
+<pre>{
+  "message": String
+}</pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
