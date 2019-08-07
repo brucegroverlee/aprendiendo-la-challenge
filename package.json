@@ -4,11 +4,14 @@
   "description": "Aprendiendo-la challenge =====================",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage --detectOpenHandles --forceExit"
+    "test": "jest --coverage --detectOpenHandles --forceExit",
+    "start": "node index.js"
   },
   "jest": {
-    "testEnvironment": "node", 
-    "setupFilesAfterEnv": ["./dotenv/config.js"]
+    "testEnvironment": "node",
+    "setupFilesAfterEnv": [
+      "./dotenv/config.js"
+    ]
   },
   "author": "Grover Lee",
   "license": "ISC",
@@ -16,7 +19,12 @@
     "jest": "^24.8.0"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "dotenv": "^8.0.0",
-    "mysql": "^2.17.1"
+    "express": "^4.17.1",
+    "helmet": "^3.20.0",
+    "morgan": "^1.9.1",
+    "mysql": "^2.17.1",
+    "path": "^0.12.7"
   }
 }
