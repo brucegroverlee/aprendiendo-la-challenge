@@ -15,6 +15,16 @@ La organización de archivos será por modulos y usando el paradigma de Programa
 ## Observaciones
 El archivo **.env** será omitido en el **.gitignore** para efecto del reto técnico.
 
+## Scripts
+#### Run
+```
+npm start
+```
+#### Test
+```
+npm test
+```
+
 ## Class
 | country   |
 |-----------|

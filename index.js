@@ -57,7 +57,7 @@ app.use( (req, res, next) => {
 if (process.env.NODE_ENV !== 'test') {
   app.listen(port, function () {
     console.log('NODE_ENV: ', process.env.NODE_ENV)
-    console.log('The Api is running on http://localhost:%d/', port)
+    console.log('The Api is running at http://localhost:%d/', port)
   })
 }
 
