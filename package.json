@@ -1,0 +1,14 @@
+{
+  "name": "aprendiendo-la",
+  "version": "1.0.0",
+  "description": "Aprendiendo-la challenge =====================",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "author": "Grover Lee",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.8.0"
+  }
+}
