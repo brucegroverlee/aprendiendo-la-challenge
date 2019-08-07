@@ -35,4 +35,12 @@ describe('Testing Countries route', () => {
     });
   });
 
+  describe('DELETE /countries', () => {
+    test('Should delete a country', async (done) => {
+      const res = await requester.del('/countries/Peru-test');
+      expect(res.status).toEqual(202);
+      done();
+    });
+  });
+
 });
