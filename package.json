@@ -4,11 +4,20 @@
   "description": "Aprendiendo-la challenge =====================",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest --coverage --detectOpenHandles --forceExit"
+  },
+  "jest": {
+    "setupFiles": [
+      "dotenv/config"
+    ]
   },
   "author": "Grover Lee",
   "license": "ISC",
   "devDependencies": {
     "jest": "^24.8.0"
+  },
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "mysql": "^2.17.1"
   }
 }

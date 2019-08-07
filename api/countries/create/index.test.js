@@ -13,6 +13,7 @@ describe('Test countries create', () => {
     const functionTest = require('./index');
     await functionTest(mocks.req, mocks.res);
     expect(mocks.res.status.mock.calls[0][0]).toBe(201);
+    expect(mocks.res.end.mock.calls.length).toBe(1);
   })
 
   test('shouldn\'t create a new country. The name is empty or not valid.', async () => {
@@ -26,6 +27,7 @@ describe('Test countries create', () => {
     const functionTest = require('./index');
     await functionTest(mocks.req, mocks.res);
     expect(mocks.res.status.mock.calls[0][0]).toBe(406);
+    expect(mocks.res.send.mock.calls.length).toBe(1);
   })
 
   test('shouldn\'t create a new country. The currency is empty or not valid.', async () => {
@@ -39,6 +41,7 @@ describe('Test countries create', () => {
     const functionTest = require('./index');
     await functionTest(mocks.req, mocks.res);
     expect(mocks.res.status.mock.calls[0][0]).toBe(406);
+    expect(mocks.res.send.mock.calls.length).toBe(1);
   })
 
   test('shouldn\'t create a new country. The phoneCode is empty or not valid.', async () => {
@@ -52,6 +55,7 @@ describe('Test countries create', () => {
     const functionTest = require('./index');
     await functionTest(mocks.req, mocks.res);
     expect(mocks.res.status.mock.calls[0][0]).toBe(406);
+    expect(mocks.res.send.mock.calls.length).toBe(1);
   })
 
   test('shouldn\'t create a new country. The isoCode is empty or not valid.', async () => {
@@ -65,6 +69,7 @@ describe('Test countries create', () => {
     const functionTest = require('./index');
     await functionTest(mocks.req, mocks.res);
     expect(mocks.res.status.mock.calls[0][0]).toBe(406);
+    expect(mocks.res.send.mock.calls.length).toBe(1);
   })
   
   
