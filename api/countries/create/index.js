@@ -28,6 +28,37 @@ const areAttributesValid = (country, res) => {
  * 
  * @param {Object} country 
  * @param {Object} res 
+ * @returns {Promise} - Returns True if the name is available. Otherwise, returns false.
+ */
+const isCountryAvailable = (country, res) => {
+  return new Promise((resolve) => {
+    const {name} = country;
+    db.query(
+        'SELECT * FROM `countries` WHERE `name` LIKE ?', 
+        [name], 
+        function (error, results, fields) {
+      if (error) {
+        throw error;
+      }
+      if (results.length===0) {
+        // is available
+        resolve(true);
+      } else  {
+        // is not
+        res.status(406);
+        res.send({
+          "message":"The name is not available."
+        });
+        resolve(false);
+      }
+    });
+  });
+};
+
+/**
+ * 
+ * @param {Object} country 
+ * @param {Object} res 
  * @returns {Promise} - Returns True if the operation was successfully. Otherwise, throw an error.
  */
 const createNewCountry = (country, res) => {
@@ -50,14 +81,20 @@ const createNewCountry = (country, res) => {
  * @function create
  */
 module.exports = async (req, res) => {
+  debugger
   try {
     const country = req.body;
 
+    let isAvailable = false;
     let createdSucsessfully = false;
 
     const areValid = areAttributesValid(country, res);
 
     if (areValid) {
+      isAvailable = await isCountryAvailable(country, res);
+    }
+
+    if (isAvailable) {
       createdSucsessfully = await createNewCountry(country, res);
     }
 

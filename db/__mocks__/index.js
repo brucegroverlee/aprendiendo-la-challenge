@@ -5,7 +5,7 @@ const __setMockError = (newMockError) => {
   __mockError = newMockError;
 };
 
-let __mockResults = {};
+let __mockResults = [];
 const __setMockResults = (newMockResults) => {
   __mockResults = newMockResults;
 };

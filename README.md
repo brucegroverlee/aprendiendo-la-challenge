@@ -85,7 +85,7 @@ Content-type: application/json
     </tr>
     <tr>
       <td style="color:red;">406 NOT ACCEPTABLE</td>
-      <td>failed. Some field was empty or undefined</td>
+      <td>failed. Some field was empty, undefined or the name is not available.</td>
       <td>
 <pre>{
   "message": String

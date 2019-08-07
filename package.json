@@ -4,6 +4,7 @@
   "description": "Aprendiendo-la challenge =====================",
   "main": "index.js",
   "scripts": {
+    "debug-test":"node --inspect-brk node_modules/.bin/jest",
     "test": "jest --coverage --detectOpenHandles --forceExit",
     "start": "node index.js"
   },
