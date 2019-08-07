@@ -146,8 +146,8 @@ NO CONTENT
 }</pre></td>
     </tr>
     <tr>
-      <td style="color:red;">404 NOT FOUND</td>
-      <td>failed. The name doesn't exist.</td>
+      <td style="color:red;">406 NOT ACCEPTABLE</td>
+      <td>failed. The name is empty or undefined.</td>
       <td>
 <pre>{
   "message": String
